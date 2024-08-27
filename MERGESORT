@@ -1,0 +1,64 @@
+// Welcome to the TypeScript Playground, this is a website
+// which gives you a chance to write, share and learn TypeScript.
+
+// You could think of it in three ways:
+//
+//  - A location to learn TypeScript where nothing can break
+//  - A place to experiment with TypeScript syntax, and share the URLs with others
+//  - A sandbox to experiment with different compiler features of TypeScript
+
+const arr = [9,4,5,2,6,3,1,7]
+const arr2 = [9,4,5,2,6,3,1]
+
+function merge(arr: number[],leftArr: number[],rightArr: number[]){
+let l = 0;
+let r = 0;
+let a = 0;
+while(l<leftArr.length && r< rightArr.length){
+  if(leftArr[l]<=rightArr[r]){
+    arr[a]=leftArr[l];
+    l++;
+    a++;
+  }else{
+    arr[a]=rightArr[r];
+    r++;
+    a++;
+  }  
+}
+while(l<leftArr.length){
+    arr[a]=leftArr[l];
+    l++;
+        a++;
+}
+while(r<rightArr.length){
+    arr[a]=rightArr[r];
+    r++;
+        a++;
+}
+}
+
+
+function mergeSort(arr: number[]){
+const len = arr.length;
+if(len==1){ return;}
+const mid = len/2;
+const leftArr = [];
+const rightArr = [];
+let i = 0;
+while(i<len){
+  if(i<mid){
+    leftArr.push(arr[i])
+  }else{
+    rightArr.push(arr[i])
+  }
+  i++;
+}
+//console.log(leftArr,'<<>>',rightArr)
+mergeSort(leftArr)
+mergeSort(rightArr)
+merge(arr, leftArr,rightArr)
+console.log('Final',arr)
+}
+
+mergeSort(arr)
+//mergeSort(arr2)
